@@ -1,4 +1,5 @@
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -12,7 +13,7 @@ function Footer() {
           <p>
             Turning Moments Into Memories.
             Creating unforgettable weddings,
-            corporate events, birthdays and celebrations.
+            corporate events, birthdays, and celebrations.
           </p>
         </div>
 
@@ -21,11 +22,11 @@ function Footer() {
           <h3>Quick Links</h3>
 
           <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Services</li>
-            <li>Packages</li>
-            <li>Contact</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/packages">Packages</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
@@ -34,10 +35,10 @@ function Footer() {
           <h3>Our Services</h3>
 
           <ul>
-            <li>💍 Wedding Planning</li>
-            <li>🏢 Corporate Events</li>
-            <li>🎂 Birthday Parties</li>
-            <li>🎤 Concerts & Shows</li>
+            <li><Link to="/services">💍 Wedding Planning</Link></li>
+            <li><Link to="/services">🏢 Corporate Events</Link></li>
+            <li><Link to="/services">🎂 Birthday Parties</Link></li>
+            <li><Link to="/services">🎤 Concerts & Shows</Link></li>
           </ul>
         </div>
 
@@ -50,21 +51,46 @@ function Footer() {
           <p>✉️ info@eventify.com</p>
 
           <div className="social-icons">
-            <span>📘</span>
-            <span>📷</span>
-            <span>🐦</span>
-            <span>💼</span>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📘
+            </a>
+
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📷
+            </a>
+
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🐦
+            </a>
+
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💼
+            </a>
           </div>
         </div>
 
       </div>
 
       <div className="footer-bottom">
-        <p>
-          © 2026 Eventify. All Rights Reserved.
-        </p>
+        <p>© 2026 Eventify. All Rights Reserved.</p>
       </div>
-
+      
     </footer>
   );
 }
