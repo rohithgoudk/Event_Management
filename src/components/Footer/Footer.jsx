@@ -51,38 +51,11 @@ function Footer() {
           <p>✉️ info@eventify.com</p>
 
           <div className="social-icons">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              📘
-            </a>
-
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              📷
-            </a>
-
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              🐦
-            </a>
-
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              💼
-            </a>
-          </div>
+  <Link to="/facebook">📘</Link>
+  <Link to="/instagram">📷</Link>
+  <Link to="/twitter">🐦</Link>
+  <Link to="/linkedin">💼</Link>
+</div>
         </div>
 
       </div>
