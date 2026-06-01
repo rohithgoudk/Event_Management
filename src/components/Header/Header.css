@@ -1,0 +1,136 @@
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 70px;
+    background:#ffffff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid #e5e7eb;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-img{
+    width:140px;
+    height:80px;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.logo-text h2{
+    color:#0f172a;
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:2px;
+}
+
+.logo-text p{
+    color:#64748b;
+    font-size:13px;
+}
+
+/* NAVIGATION */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    list-style:none;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#0f172a;
+    font-size:16px;
+    font-weight:600;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#2563eb;
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+/* MOBILE MENU ICON */
+
+.menu-icon{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+    color:#0f172a;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .header{
+        padding:15px 20px;
+    }
+
+    .menu-icon{
+        display:block;
+    }
+
+    .nav{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:white;
+        box-shadow:0 10px 25px rgba(0,0,0,.08);
+        display:none;
+    }
+
+    .nav.active{
+        display:block;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        gap:0;
+        width:100%;
+    }
+
+    .nav-links li{
+        width:100%;
+        text-align:center;
+        padding:16px;
+        border-top:1px solid #e5e7eb;
+    }
+
+    .logo-img{
+        width:60px;
+        height:60px;
+    }
+
+    .logo-text h2{
+        font-size:22px;
+    }
+
+    .logo-text p{
+        font-size:11px;
+    }
+}
