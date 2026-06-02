@@ -11,13 +11,13 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-  <a href="/#/">
-    <img
-      src={stackly}
-      alt="Logo"
-      className="logo-img"
-    />
-  </a>
+      <a href="/Event_Management/#/">
+  <img
+    src={stackly}
+    alt="Logo"
+    className="logo-img"
+  />
+</a>
 
         
         <div className="logo-text">         
