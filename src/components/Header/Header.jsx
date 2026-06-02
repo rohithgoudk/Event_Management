@@ -11,7 +11,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-  <a href="/">
+  <a href="/#">
     <img
       src={stackly}
       alt="Logo"
