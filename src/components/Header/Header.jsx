@@ -1,17 +1,24 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import stackly from "../../assets/S.jpeg";
+import {useNavigate} from "react-router-dom"
+import stackly from "../../assets/S.webp";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate=useNavigate();
 
   return (
     <header className="header">
       <div className="logo">
-        <img src={stackly} alt="Logo" className="logo-img" />
-        <div className="logo-text">
-          
+      <img
+  src={stackly}
+  alt="Logo"
+  className="logo-img"
+  onClick={() => navigate("/")}
+/>
+        
+        <div className="logo-text">         
         </div>
       </div>
 

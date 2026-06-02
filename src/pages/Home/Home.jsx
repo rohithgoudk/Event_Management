@@ -1,7 +1,13 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import p1 from "../../assets/p-1.webp"
+import p2 from "../../assets/p-2.webp"
+import p3 from "../../assets/p-3.webp"
+import p4 from "../../assets/p-4.webp"
+import p5 from "../../assets/p-5.webp"
+import p6 from "../../assets/p-6.webp"
+import "./Home.css"
+
 
 function Home() {
   const navigate = useNavigate();
@@ -40,7 +46,7 @@ function Home() {
     setFormData({
       name: "",
       email: "",
-      phone: "",
+      phone: "",      
       message: "",
     });
 
@@ -51,7 +57,6 @@ function Home() {
 
   return (
     <>
-      <Header />
 
       {/* HERO */}
       <section className="hero">
@@ -248,32 +253,32 @@ function Home() {
 
         <div className="gallery-grid">
           <img
-            src="https://images.unsplash.com/photo-1519741497674-611481863552"
+            src={p1}
             alt="Wedding"
           />
 
           <img
-            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30"
+            src={p2}
             alt="Concert"
           />
 
           <img
-            src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3"
+            src={p3}
             alt="Event"
           />
 
           <img
-            src="https://images.unsplash.com/photo-1505236858219-8359eb29e329"
+            src={p4}
             alt="Corporate"
           />
 
           <img
-            src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d"
+            src={p5}
             alt="Birthday"
           />
 
           <img
-            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622"
+            src={p6}
             alt="Wedding Hall"
           />
         </div>
@@ -358,7 +363,6 @@ function Home() {
         </form>
       </section>
 
-      <Footer />
     </>
   );
 }
