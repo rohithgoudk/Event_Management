@@ -11,12 +11,14 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-      <img
-  src={stackly}
-  alt="Logo"
-  className="logo-img"
-  onClick={() => navigate("/")}
-/>
+  <a href="/">
+    <img
+      src={stackly}
+      alt="Logo"
+      className="logo-img"
+    />
+  </a>
+
         
         <div className="logo-text">         
         </div>
