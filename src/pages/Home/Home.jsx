@@ -1,13 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import p1 from "../../assets/p-1.webp"
-import p2 from "../../assets/p-2.webp"
-import p3 from "../../assets/p-3.webp"
-import p4 from "../../assets/p-4.webp"
-import p5 from "../../assets/p-5.webp"
-import p6 from "../../assets/p-6.webp"
-import "./Home.css"
+import p1 from "../../assets/p-1.webp";
+import p2 from "../../assets/p-2.webp";
+import p3 from "../../assets/p-3.webp";
+import p4 from "../../assets/p-4.webp";
+import p5 from "../../assets/p-5.webp";
+import p6 from "../../assets/p-6.webp";
 
+import weddingplanners from "../../assets/wedding-planners.webp";
+import CorporateEvents from "../../assets/Corporate-Events.webp";
+import BirthdayConcerts from "../../assets/Birthday-concerts.webp";
+import concertshows from "../../assets/Concert-shows.webp";
+
+import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
@@ -46,7 +51,7 @@ function Home() {
     setFormData({
       name: "",
       email: "",
-      phone: "",      
+      phone: "",
       message: "",
     });
 
@@ -71,23 +76,6 @@ function Home() {
         <button onClick={() => navigate("/book-event")}>
           Book Event
         </button>
-
-        <div className="hero-stats">
-          <div>
-            <h3>500+</h3>
-            <p>Events</p>
-          </div>
-
-          <div>
-            <h3>8+</h3>
-            <p>Years</p>
-          </div>
-
-          <div>
-            <h3>10K+</h3>
-            <p>Guests</p>
-          </div>
-        </div>
       </section>
 
       {/* ABOUT */}
@@ -113,7 +101,10 @@ function Home() {
 
         <div className="service-grid">
           <div className="service-card">
-            <div className="service-icon">💍</div>
+            <img
+              src={weddingplanners}
+              alt="Wedding-Planners"
+            />
             <h3>Wedding Planning</h3>
             <p>
               Luxury wedding planning with beautiful
@@ -122,7 +113,10 @@ function Home() {
           </div>
 
           <div className="service-card">
-            <div className="service-icon">🏢</div>
+            <img
+              src={CorporateEvents}
+              alt="Corporate-Events"
+            />
             <h3>Corporate Events</h3>
             <p>
               Professional conferences, seminars,
@@ -131,7 +125,10 @@ function Home() {
           </div>
 
           <div className="service-card">
-            <div className="service-icon">🎂</div>
+            <img
+              src={BirthdayConcerts}
+              alt="Birthday-concerts"
+            />
             <h3>Birthday Celebrations</h3>
             <p>
               Creative themes and memorable birthday
@@ -140,7 +137,10 @@ function Home() {
           </div>
 
           <div className="service-card">
-            <div className="service-icon">🎤</div>
+            <img
+              src={concertshows}
+              alt="Concerts-Shows"
+            />
             <h3>Concerts & Shows</h3>
             <p>
               Large-scale entertainment events with
@@ -220,67 +220,17 @@ function Home() {
         </div>
       </section>
 
-      {/* EXPERIENCE */}
-      <section className="experience">
-        <h2>Our Experience</h2>
-
-        <div className="exp-grid">
-          <div>
-            <h1>8+</h1>
-            <p>Years Experience</p>
-          </div>
-
-          <div>
-            <h1>500+</h1>
-            <p>Events Managed</p>
-          </div>
-
-          <div>
-            <h1>10K+</h1>
-            <p>Guests Served</p>
-          </div>
-
-          <div>
-            <h1>150+</h1>
-            <p>Corporate Clients</p>
-          </div>
-        </div>
-      </section>
-
       {/* GALLERY */}
-      <section className="gallery">
+<section className="gallery">
         <h2>Event Gallery</h2>
 
         <div className="gallery-grid">
-          <img
-            src={p1}
-            alt="Wedding"
-          />
-
-          <img
-            src={p2}
-            alt="Concert"
-          />
-
-          <img
-            src={p3}
-            alt="Event"
-          />
-
-          <img
-            src={p4}
-            alt="Corporate"
-          />
-
-          <img
-            src={p5}
-            alt="Birthday"
-          />
-
-          <img
-            src={p6}
-            alt="Wedding Hall"
-          />
+          <img src={p1} alt="Wedding" />
+          <img src={p2} alt="Concert" />
+          <img src={p3} alt="Event" />
+          <img src={p4} alt="Corporate" />
+          <img src={p5} alt="Birthday" />
+          <img src={p6} alt="Wedding Hall" />
         </div>
       </section>
 
