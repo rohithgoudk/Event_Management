@@ -6,6 +6,8 @@ import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import NotFound from "./pages/NotFound/NotFound";
 import SignUp from "./components/Signup/Signup";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/signup" element={<SignUp/>}/>
+        
+        <Route path="/admin-dashboard" element={<AdminDashboard/>} />
 
         {/* Pages without Header & Footer */}
         <Route path="/dashboard" element={<Dashboard />} />

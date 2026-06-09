@@ -1,5 +1,6 @@
 import "./Footer.css";
 import { Link } from "react-router-dom";
+import logo from "../../assets/stacklyimg1.webp"
 
 function Footer() {
   return (
@@ -9,7 +10,10 @@ function Footer() {
 
         {/* Brand */}
         <div className="footer-section">
-          <h2>Eventify</h2>
+          <div className="logo">
+          <img src={logo} alt="" />
+
+          </div>
           <p>
             Turning Moments Into Memories.
             Creating unforgettable weddings,
@@ -47,8 +51,8 @@ function Footer() {
           <h3>Contact Us</h3>
 
           <p>📍 Hyderabad, India</p>
-          <p>📞 +91 98765 43210</p>
-          <p>✉️ info@eventify.com</p>
+          <p>📞 +91 9876543210</p>
+          <p>✉️ info@stackly.com</p>
 
           <div className="social-icons">
   <Link to="/facebook">📘</Link>

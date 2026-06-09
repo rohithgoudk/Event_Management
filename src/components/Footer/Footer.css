@@ -11,6 +11,20 @@
   margin-bottom:40px;
 }
 
+.footer-section:first-child {
+  flex: 1.5;
+}
+
+.footer-section .logo {
+  margin-bottom: 15px;
+}
+
+.footer-section .logo img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(108, 99, 255, 0.3));
+}
 .footer-section h2{
   color:#38bdf8;
   margin-bottom:15px;

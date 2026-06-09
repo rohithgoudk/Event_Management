@@ -21,8 +21,13 @@ function SignUp() {
 
   const validate = () => {
     const newErrors = {};
-    if (!form.username.trim()) newErrors.username = "Username is required.";
-    else if (form.username.trim().length < 3) newErrors.username = "At least 3 characters.";
+    if (!form.username.trim()) {
+      newErrors.username = "Username is required.";
+    } else if (form.username.trim().length < 3) {
+      newErrors.username = "At least 3 characters.";
+    } else if (!/^[A-Za-z\s]+$/.test(form.username.trim())) {
+      newErrors.username = "Username can contain only alphabets.";
+    }
 
     if (!form.email.trim()) newErrors.email = "Email is required.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))

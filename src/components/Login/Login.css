@@ -297,7 +297,7 @@
      border: none;
      border-radius: var(--radius-md);
      color: #fff;
-     font-family: var(--font-display);
+     font-family: 'Segoe UI', sans-serif;
      font-size: 15px;
      font-weight: 700;
      letter-spacing: 0.2px;
