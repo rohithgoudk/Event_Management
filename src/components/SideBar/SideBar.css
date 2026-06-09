@@ -1,0 +1,139 @@
+/* ============================================
+   SIDEBAR.CSS — Event Manager App
+   ============================================ */
+
+   .sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #111827 0%, #1e293b 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 100;
+    overflow-y: auto;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* ── Close button (mobile only) ── */
+  .sidebar-close {
+    display: none;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+  }
+  
+  .sidebar-close:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+  
+  /* ── Logo area ── */
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 24px 16px;
+    min-height: 80px;
+    overflow: hidden;
+  }
+  
+  /* Logo image */
+  .logo-image {
+    width: 160px;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* ── Nav menu ── */
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .sidebar-menu li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    cursor: pointer;
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.75);
+    transition: background 0.2s, color 0.2s;
+    border-left: 4px solid transparent;
+  }
+  
+  .sidebar-menu li:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+  }
+  
+  .sidebar-menu li.active {
+    background: rgba(99, 102, 241, 0.2);
+    border-left: 4px solid #6366f1;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  /* ── Logout ── */
+  .logout-btn {
+    margin: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #ef4444;
+    color: white;
+    cursor: pointer;
+    font-size: 14.5px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  
+  .logout-btn:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+  }
+  
+  /* ══════════════════════════════════════════
+     MOBILE — off-canvas sidebar
+  ══════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
+    }
+  
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  
+    /* Show the ✕ close button on mobile */
+    .sidebar-close {
+      display: flex;
+    }
+  
+    /* Push logo down so it doesn't sit behind the close button */
+    .sidebar-logo {
+      padding-top: 60px;
+    }
+  }

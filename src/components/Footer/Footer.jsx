@@ -61,7 +61,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2026 Eventify. All Rights Reserved.</p>
+        <p>© 2026 Stackly. All Rights Reserved.</p>
       </div>
       
     </footer>
