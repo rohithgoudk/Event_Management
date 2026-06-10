@@ -1,12 +1,13 @@
 /* ============================================
    SIDEBAR.CSS — Event Manager App
+   Aesthetic: Light / Soft Surface
    ============================================ */
 
    .sidebar {
     width: 260px;
     min-height: 100vh;
-    background: linear-gradient(180deg, #111827 0%, #1e293b 100%);
-    color: #fff;
+    background: #ffffff;
+    color: #1e293b;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,6 +19,22 @@
     z-index: 100;
     overflow-y: auto;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 1px 0 2px rgba(15, 23, 42, 0.03);
+  }
+  
+  /* Custom scrollbar */
+  .sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.1);
+    border-radius: 4px;
+  }
+  
+  /* ── Mobile overlay ── */
+  .sidebar-overlay {
+    display: none;
   }
   
   /* ── Close button (mobile only) ── */
@@ -28,10 +45,10 @@
     right: 14px;
     width: 32px;
     height: 32px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.1);
     border-radius: 8px;
-    color: #fff;
+    color: #1e293b;
     font-size: 14px;
     cursor: pointer;
     align-items: center;
@@ -41,7 +58,7 @@
   }
   
   .sidebar-close:hover {
-    background: rgba(255, 255, 255, 0.18);
+    background: #eef1f8;
   }
   
   /* ── Logo area ── */
@@ -52,9 +69,10 @@
     padding: 20px 24px 16px;
     min-height: 80px;
     overflow: hidden;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    margin: 0 16px 12px;
   }
   
-  /* Logo image */
   .logo-image {
     width: 160px;
     height: auto;
@@ -64,40 +82,62 @@
   }
   
   /* ── Nav menu ── */
+  .sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+  }
+  
   .sidebar-menu {
     list-style: none;
-    padding: 0;
+    padding: 8px 12px;
     margin: 0;
-    flex: 1;
   }
   
   .sidebar-menu li {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 14px 24px;
+    padding: 12px 12px;
+    margin-bottom: 2px;
     cursor: pointer;
     font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.75);
-    transition: background 0.2s, color 0.2s;
+    color: #64748b;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.15s ease;
+    border-radius: 10px;
     border-left: 4px solid transparent;
+    user-select: none;
   }
   
   .sidebar-menu li:hover {
-    background: rgba(255, 255, 255, 0.07);
-    color: #fff;
+    background: #f8fafc;
+    color: #1e293b;
+    transform: translateX(2px);
   }
   
   .sidebar-menu li.active {
-    background: rgba(99, 102, 241, 0.2);
+    background: rgba(99, 102, 241, 0.1);
     border-left: 4px solid #6366f1;
-    color: #fff;
+    color: #6366f1;
     font-weight: 600;
+  }
+  
+  .menu-icon {
+    font-size: 16px;
+    width: 22px;
+    display: inline-flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .menu-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   /* ── Logout ── */
   .logout-btn {
-    margin: 20px;
+    margin: 16px;
     padding: 12px;
     border: none;
     border-radius: 10px;
@@ -106,6 +146,10 @@
     cursor: pointer;
     font-size: 14.5px;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     transition: background 0.2s, transform 0.15s;
   }
   
@@ -114,26 +158,42 @@
     transform: translateY(-1px);
   }
   
+  .logout-btn:active {
+    transform: translateY(0);
+  }
+  
   /* ══════════════════════════════════════════
      MOBILE — off-canvas sidebar
   ══════════════════════════════════════════ */
   @media (max-width: 768px) {
     .sidebar {
       transform: translateX(-100%);
-      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 8px 0 32px rgba(15, 23, 42, 0.15);
     }
   
     .sidebar.open {
       transform: translateX(0);
     }
   
-    /* Show the ✕ close button on mobile */
     .sidebar-close {
       display: flex;
     }
   
-    /* Push logo down so it doesn't sit behind the close button */
     .sidebar-logo {
       padding-top: 60px;
+    }
+  
+    .sidebar-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      z-index: 99;
+      animation: fadeIn 0.2s ease;
+    }
+  
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   }

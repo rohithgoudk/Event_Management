@@ -1,73 +1,70 @@
 import "./SideBar.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import logo from "../../assets/stacklyimg1.webp";
 
-function SideBar({ isOpen, onClose }) {
+const MENU_ITEMS = [
+  { icon: "📊", label: "Dashboard", key: "dashboard" },
+  { icon: "📅", label: "Events", key: "events" },
+  { icon: "🎟️", label: "Bookings", key: "bookings" },
+  { icon: "👥", label: "Attendees", key: "attendees" },
+  { icon: "💰", label: "Revenue", key: "revenue" },
+  { icon: "📈", label: "Reports", key: "reports" },
+  { icon: "📨", label: "Invitations", key: "invitations" },
+  { icon: "🗓️", label: "Calendar", key: "calendar" },
+  { icon: "⭐", label: "Reviews", key: "reviews" },
+  { icon: "👨‍💼", label: "Team", key: "team" },
+  { icon: "⚙️", label: "Settings", key: "settings" },
+];
+
+function SideBar({ isOpen, onClose, activeItem = "dashboard", onItemSelect }) {
   const navigate = useNavigate();
+  const [active, setActive] = useState(activeItem);
+
+  const handleSelect = (key) => {
+    setActive(key);
+    onItemSelect?.(key);
+    onClose?.();
+  };
 
   return (
-    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
-      {/* Close button — visible on mobile only */}
-      <button className="sidebar-close" onClick={onClose} aria-label="Close menu">
-        ✕
-      </button>
+    <>
+      {/* Mobile overlay */}
+      {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
 
-      {/* Logo */}
-      <div className="sidebar-logo">
-        <img src={logo} alt="Stackly logo" className="logo-image" />
-      </div>
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+        <button
+          className="sidebar-close"
+          onClick={onClose}
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
 
-      <ul className="sidebar-menu">
-        <li className="active">
-          <span>📊</span>
-          Dashboard
-        </li>
-        <li>
-          <span>📅</span>
-          Events
-        </li>
-        <li>
-          <span>🎟️</span>
-          Bookings
-        </li>
-        <li>
-          <span>👥</span>
-          Attendees
-        </li>
-        <li>
-          <span>💰</span>
-          Revenue
-        </li>
-        <li>
-          <span>📈</span>
-          Reports
-        </li>
-        <li>
-          <span>📨</span>
-          Invitations
-        </li>
-        <li>
-          <span>🗓️</span>
-          Calendar
-        </li>
-        <li>
-          <span>⭐</span>
-          Reviews
-        </li>
-        <li>
-          <span>👨‍💼</span>
-          Team
-        </li>
-        <li>
-          <span>⚙️</span>
-          Settings
-        </li>
-      </ul>
+        <div className="sidebar-logo">
+          <img src={logo} alt="Stackly logo" className="logo-image" />
+        </div>
 
-      <button className="logout-btn" onClick={() => navigate("/")}>
-        🚪 Logout
-      </button>
-    </aside>
+        <nav className="sidebar-nav">
+          <ul className="sidebar-menu">
+            {MENU_ITEMS.map((item) => (
+              <li
+                key={item.key}
+                className={active === item.key ? "active" : ""}
+                onClick={() => handleSelect(item.key)}
+              >
+                <span className="menu-icon">{item.icon}</span>
+                <span className="menu-label">{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <button className="logout-btn" onClick={() => navigate("/")}>
+          <span className="menu-icon">🚪</span> Logout
+        </button>
+      </aside>
+    </>
   );
 }
 

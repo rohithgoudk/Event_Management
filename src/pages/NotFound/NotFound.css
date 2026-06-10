@@ -1,121 +1,133 @@
-.nf-container{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
-    padding:20px;
-    overflow:hidden;
-    position:relative;
-    }
-    
-    .nf-container::before{
-    content:"";
-    position:absolute;
-    width:350px;
-    height:350px;
-    background:#06b6d4;
-    border-radius:50%;
-    top:-100px;
-    left:-100px;
-    filter:blur(120px);
-    opacity:.4;
-    }
-    
-    .nf-container::after{
-    content:"";
-    position:absolute;
-    width:400px;
-    height:400px;
-    background:#8b5cf6;
-    border-radius:50%;
-    right:-100px;
-    bottom:-100px;
-    filter:blur(120px);
-    opacity:.4;
-    }
-    
-    .nf-card{
-    width:550px;
-    max-width:100%;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:25px;
-    padding:50px;
-    text-align:center;
-    color:white;
-    position:relative;
-    z-index:2;
-    animation:updown 4s ease-in-out infinite;
-    }
-    
-    
-    .nf-code{
-    font-size:120px;
-    font-weight:800;
-    line-height:1;
-    background:linear-gradient(45deg,#38bdf8,#8b5cf6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    margin-bottom:10px;
-    }
-    
-    .nf-title{
-    font-size:32px;
-    margin-bottom:15px;
-    }
-    
-    .nf-text{
-    font-size:18px;
-    line-height:1.7;
-    color:#cbd5e1;
-    margin-bottom:30px;
-    }
-    
-    .nf-btn{
-    padding:14px 35px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#06b6d4,#3b82f6);
-    color:white;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-    }
-    
-    .nf-btn:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 30px rgba(59,130,246,.4);
-    }
-    
-    @keyframes updown{
-    0%{
-    transform:translateY(0);
-    }
-    50%{
-    transform:translateY(-12px);
-    }
-    100%{
-    transform:translateY(0);
-    }
-    }
-    
-    @media(max-width:768px){
-    .nf-card{
-    padding:35px 25px;
-    }
-    
-    .nf-code{
-    font-size:90px;
-    }
-    
-    .nf-title{
-    font-size:24px;
-    }
-    
-    .nf-text{
-    font-size:16px;
-    }
-    }
+/* NotFound.css */
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-12px); }
+  }
+  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulse-ring {
+    0%   { transform: scale(0.85); opacity: 0.4; }
+    70%  { transform: scale(1.15); opacity: 0; }
+    100% { transform: scale(0.85); opacity: 0; }
+  }
+  
+  @keyframes shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position:  400px 0; }
+  }
+  
+  /* ── Page ── */
+  .nf-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 2rem 1rem;
+  }
+  
+  /* ── Card ── */
+  .nf-card {
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  
+  /* ── Floating graphic area ── */
+  .nf-graphic {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 2rem;
+  }
+  
+  .nf-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid #e5e5e5;
+    animation: pulse-ring 2.8s ease-out infinite;
+  }
+  
+  .nf-ring:nth-child(2) {
+    animation-delay: 0.9s;
+  }
+  
+  /* Wrap your SVG illustration in a div with this class */
+  .nf-graphic-icon {
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ── 404 heading ── */
+  .nf-code {
+    font-size: 80px;
+    font-weight: 500;
+    letter-spacing: -4px;
+    line-height: 1;
+    margin: 0 0 0.5rem;
+  
+    /* shimmer effect */
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #d0d0d0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 400px 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  
+    animation:
+      shimmer  2.4s linear infinite,
+      fadeUp   0.6s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  
+  /* ── Title ── */
+  .nf-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #111111;
+    margin: 0 0 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  /* ── Body text ── */
+  .nf-text {
+    font-size: 15px;
+    color: #888888;
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  /* ── Button ── */
+  .nf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #111111;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  .nf-btn:hover  { background: #333333; transform: translateY(-1px); }
+  .nf-btn:active { transform: scale(0.97); }
