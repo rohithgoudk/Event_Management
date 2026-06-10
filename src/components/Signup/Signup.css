@@ -6,7 +6,7 @@
 
    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
 
-   /* ── Variables (mirrored from Dashboard) ── */
+   /* ── Variables ── */
    :root {
      --bg-base:        #0b0f1a;
      --bg-surface:     #111827;
@@ -28,9 +28,6 @@
    
      --error:          #ef4444;
      --error-bg:       rgba(239, 68, 68, 0.08);
-   
-     --glow-indigo:    0 0 32px rgba(99, 102, 241, 0.25);
-     --glow-pink:      0 0 32px rgba(236, 72, 153, 0.2);
    
      --radius-sm:   8px;
      --radius-md:   14px;
@@ -119,7 +116,6 @@
        0 24px 64px rgba(0, 0, 0, 0.45);
    }
    
-   /* Subtle indigo top-edge glow */
    .signup-card::before {
      content: '';
      position: absolute;
@@ -143,18 +139,16 @@
      margin-bottom: 28px;
    }
    
-   .brand-mark {
-     font-size: 32px;
-     color: var(--accent-indigo);
-     display: block;
-     margin-bottom: 14px;
-     filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5));
-     animation: pulse 3s ease-in-out infinite;
+   .logo-container {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 16px;
    }
    
-   @keyframes pulse {
-     0%, 100% { filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.4)); }
-     50%       { filter: drop-shadow(0 0 22px rgba(99, 102, 241, 0.75)); }
+   .login-logo {
+     height: 48px;
+     width: auto;
+     object-fit: contain;
    }
    
    .signup-header h1 {
@@ -207,10 +201,6 @@
      color: var(--text-primary);
      transform: translateY(-1px);
      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-   }
-   
-   .social-btn svg {
-     flex-shrink: 0;
    }
    
    /* ── Divider ── */
@@ -300,11 +290,6 @@
      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
    }
    
-   /* Valid state */
-   .field.is-valid .input-wrap input {
-     border-color: rgba(16, 185, 129, 0.4);
-   }
-   
    /* Error state */
    .field.has-error .input-wrap input {
      border-color: rgba(239, 68, 68, 0.5);
@@ -315,16 +300,29 @@
      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
    }
    
-   /* Valid tick */
-   .valid-tick {
-     position: absolute;
-     right: 14px;
-     color: var(--accent-emerald);
-     font-size: 14px;
-     font-weight: 700;
-     pointer-events: none;
-   }
-   
+   .back-home-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  
+    margin-bottom: 20px;
+    padding: 0;
+  
+    transition: var(--transition);
+  }
+  
+  .back-home-btn:hover {
+    color: var(--accent-indigo);
+    transform: translateX(-3px);
+  }
+
    /* Toggle password button */
    .toggle-pw {
      position: absolute;
@@ -332,16 +330,18 @@
      background: none;
      border: none;
      cursor: pointer;
-     font-size: 15px;
      padding: 4px;
      border-radius: 4px;
      line-height: 1;
-     transition: opacity 0.15s;
-     opacity: 0.6;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: white;
+     transition: color 0.15s;
    }
    
    .toggle-pw:hover {
-     opacity: 1;
+     color: var(--text-primary);
    }
    
    /* Error message */
@@ -359,42 +359,11 @@
      font-size: 11px;
    }
    
-   /* ── Password strength ── */
-   .strength-row {
-     display: flex;
-     align-items: center;
-     gap: 8px;
-     margin-top: 4px;
-   }
-   
-   .strength-bars {
-     display: flex;
-     gap: 4px;
-     flex: 1;
-   }
-   
-   .strength-bar {
-     flex: 1;
-     height: 3px;
-     border-radius: 99px;
-     transition: background 0.3s ease;
-   }
-   
-   .strength-label {
-     font-size: 11.5px;
-     font-weight: 600;
-     letter-spacing: 0.3px;
-     min-width: 42px;
-     text-align: right;
-   }
-   
    /* ══════════════════════════════════════════
-      CHECKBOX — Terms & Conditions
+      CHECKBOX
    ══════════════════════════════════════════ */
    
-   .checkbox-field {
-     gap: 8px;
-   }
+   .checkbox-field { gap: 8px; }
    
    .checkbox-label {
      display: flex;
@@ -404,7 +373,6 @@
      user-select: none;
    }
    
-   /* Hide native checkbox */
    .checkbox-label input[type="checkbox"] {
      position: absolute;
      opacity: 0;
@@ -413,7 +381,6 @@
      pointer-events: none;
    }
    
-   /* Custom box */
    .checkbox-box {
      width: 18px;
      height: 18px;
@@ -433,7 +400,6 @@
      background: rgba(99, 102, 241, 0.08);
    }
    
-   /* Checked state */
    .checkbox-check {
      font-size: 11px;
      font-weight: 800;
@@ -501,9 +467,7 @@
      background: linear-gradient(135deg, #5558e8 0%, #6d76f0 100%);
    }
    
-   .btn-primary:active {
-     transform: translateY(0);
-   }
+   .btn-primary:active { transform: translateY(0); }
    
    .btn-arrow {
      font-size: 17px;
@@ -529,9 +493,7 @@
      transition: color 0.15s;
    }
    
-   .signin-link a:hover {
-     color: #818cf8;
-   }
+   .signin-link a:hover { color: #818cf8; }
    
    /* ══════════════════════════════════════════
       SUCCESS STATE
@@ -567,9 +529,7 @@
      line-height: 1.6;
    }
    
-   .success-card p strong {
-     color: var(--accent-indigo);
-   }
+   .success-card p strong { color: var(--accent-indigo); }
    
    /* ══════════════════════════════════════════
       SCROLLBAR
@@ -588,22 +548,11 @@
        padding: 32px 22px 28px;
        border-radius: var(--radius-lg);
      }
-   
-     .signup-header h1 {
-       font-size: 22px;
-     }
-   
-     .social-row {
-       grid-template-columns: 1fr;
-     }
-   
-     .social-btn {
-       justify-content: center;
-     }
+     .signup-header h1 { font-size: 22px; }
+     .social-row { grid-template-columns: 1fr; }
+     .social-btn { justify-content: center; }
    }
    
    @media (max-width: 360px) {
-     .signup-card {
-       padding: 28px 16px 24px;
-     }
+     .signup-card { padding: 28px 16px 24px; }
    }

@@ -140,7 +140,7 @@ function Dashboard() {
             </button>
 
             <div className="welcome-section">
-              <h1>Welcome Back, {user.name} 👋</h1>
+              <h1>Welcome Back</h1>
               <p>Here's what's happening with your events today.</p>
             </div>
 

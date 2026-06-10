@@ -1,7 +1,7 @@
 import "./SignUp.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/stacklyimg1.webp"
+import logo from "../../assets/stacklyimg1.webp";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ function SignUp() {
 
   const validate = () => {
     const newErrors = {};
+
     if (!form.username.trim()) {
       newErrors.username = "Username is required.";
     } else if (form.username.trim().length < 3) {
@@ -29,24 +30,37 @@ function SignUp() {
       newErrors.username = "Username can contain only alphabets.";
     }
 
-    if (!form.email.trim()) newErrors.email = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      newErrors.email = "Enter a valid email address.";
+    if (!form.email.trim()) {
+      newErrors.email = "Email is required.";
+    } else if (!/^[^\s@]+@gmail\.com$/.test(form.email)) {
+      newErrors.email = "Only Gmail addresses are allowed (e.g. you@gmail.com).";
+    }
 
-    if (!form.password) newErrors.password = "Password is required.";
-    else if (form.password.length < 8) newErrors.password = "At least 8 characters.";
+    if (!form.password) {
+      newErrors.password = "Password is required.";
+    } else if (form.password.length < 8) {
+      newErrors.password = "At least 8 characters.";
+    }
 
-    if (!form.confirmPassword) newErrors.confirmPassword = "Please confirm your password.";
-    else if (form.password !== form.confirmPassword)
+    if (!form.confirmPassword) {
+      newErrors.confirmPassword = "Please confirm your password.";
+    } else if (form.password !== form.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
+    }
 
-    if (!form.agreed) newErrors.agreed = "You must accept the terms to continue.";
+    if (!form.agreed) {
+      newErrors.agreed = "You must accept the terms to continue.";
+    }
 
     return newErrors;
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    // Block numbers in username field
+    if (name === "username" && /[0-9]/.test(value)) return;
+
     setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
@@ -61,24 +75,11 @@ function SignUp() {
     setSubmitted(true);
   };
 
-  const passwordStrength = (pwd) => {
-    if (!pwd) return { level: 0, label: "", color: "" };
-    let score = 0;
-    if (pwd.length >= 8) score++;
-    if (/[A-Z]/.test(pwd)) score++;
-    if (/[0-9]/.test(pwd)) score++;
-    if (/[^A-Za-z0-9]/.test(pwd)) score++;
-    if (score <= 1) return { level: 1, label: "Weak", color: "#ef4444" };
-    if (score === 2) return { level: 2, label: "Fair", color: "#f59e0b" };
-    if (score === 3) return { level: 3, label: "Good", color: "#10b981" };
-    return { level: 4, label: "Strong", color: "#6366f1" };
-  };
-
-  const strength = passwordStrength(form.password);
-
   if (submitted) {
     return (
       <div className="signup-page">
+        <div className="bg-blob blob-1" />
+        <div className="bg-blob blob-2" />
         <div className="signup-card success-card">
           <div className="success-icon">🎉</div>
           <h2>Account created!</h2>
@@ -93,21 +94,23 @@ function SignUp() {
 
   return (
     <div className="signup-page">
-      {/* Ambient background blobs */}
       <div className="bg-blob blob-1" />
       <div className="bg-blob blob-2" />
 
       <div className="signup-card">
+
+      <button
+  type="button"
+  className="back-home-btn"
+  onClick={() => navigate("/")}
+>
+  ← Back to Home
+</button>
         {/* Header */}
         <div className="signup-header">
-        <div className="logo-container">
-    {/* Replace src with your logo */}
-    <img
-      src={logo}
-      alt="Logo"
-      className="login-logo"
-    />
-  </div>
+          <div className="logo-container">
+            <img src={logo} alt="Logo" className="login-logo" />
+          </div>
           <h1>Create your account</h1>
           <p>Join thousands of event managers on Stackly.</p>
         </div>
@@ -124,16 +127,11 @@ function SignUp() {
             Continue with Google
           </button>
           <button className="social-btn">
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-  >
-    <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0zM7.119 20.452H3.558V8.999h3.561v11.453zM5.338 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zm15.114 13.019h-3.556v-5.569c0-1.328-.025-3.038-1.851-3.038-1.853 0-2.136 1.447-2.136 2.941v5.666H9.353V8.999h3.414v1.561h.049c.475-.9 1.637-1.85 3.369-1.85 3.603 0 4.267 2.372 4.267 5.455v6.287z" />
-  </svg>
-  Continue with LinkedIn
-</button>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0zM7.119 20.452H3.558V8.999h3.561v11.453zM5.338 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zm15.114 13.019h-3.556v-5.569c0-1.328-.025-3.038-1.851-3.038-1.853 0-2.136 1.447-2.136 2.941v5.666H9.353V8.999h3.414v1.561h.049c.475-.9 1.637-1.85 3.369-1.85 3.603 0 4.267 2.372 4.267 5.455v6.287z" />
+            </svg>
+            Continue with LinkedIn
+          </button>
         </div>
 
         {/* Divider */}
@@ -143,8 +141,9 @@ function SignUp() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} noValidate>
+
           {/* Username */}
-          <div className={`field ${errors.username ? "has-error" : form.username ? "is-valid" : ""}`}>
+          <div className={`field ${errors.username ? "has-error" : ""}`}>
             <label htmlFor="username">Username</label>
             <div className="input-wrap">
               <span className="input-icon">👤</span>
@@ -157,13 +156,12 @@ function SignUp() {
                 onChange={handleChange}
                 autoComplete="username"
               />
-              {form.username && !errors.username && <span className="valid-tick">✓</span>}
             </div>
             {errors.username && <p className="error-msg">{errors.username}</p>}
           </div>
 
           {/* Email */}
-          <div className={`field ${errors.email ? "has-error" : form.email ? "is-valid" : ""}`}>
+          <div className={`field ${errors.email ? "has-error" : ""}`}>
             <label htmlFor="email">Email address</label>
             <div className="input-wrap">
               <span className="input-icon">✉️</span>
@@ -171,18 +169,17 @@ function SignUp() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="you@gmail.com"
                 value={form.email}
                 onChange={handleChange}
                 autoComplete="email"
               />
-              {form.email && !errors.email && <span className="valid-tick">✓</span>}
             </div>
             {errors.email && <p className="error-msg">{errors.email}</p>}
           </div>
 
           {/* Password */}
-          <div className={`field ${errors.password ? "has-error" : form.password ? "is-valid" : ""}`}>
+          <div className={`field ${errors.password ? "has-error" : ""}`}>
             <label htmlFor="password">Password</label>
             <div className="input-wrap">
               <span className="input-icon">🔒</span>
@@ -201,33 +198,27 @@ function SignUp() {
                 onClick={() => setShowPassword((v) => !v)}
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                {showPassword ? "🙈" : "👁️"}
+                {showPassword ? (
+                  // Eye-off SVG
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                ) : (
+                  // Eye SVG
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                )}
               </button>
             </div>
-            {/* Strength meter */}
-            {form.password && (
-              <div className="strength-row">
-                <div className="strength-bars">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="strength-bar"
-                      style={{
-                        background: i <= strength.level ? strength.color : "rgba(255,255,255,0.08)",
-                      }}
-                    />
-                  ))}
-                </div>
-                <span className="strength-label" style={{ color: strength.color }}>
-                  {strength.label}
-                </span>
-              </div>
-            )}
             {errors.password && <p className="error-msg">{errors.password}</p>}
           </div>
 
           {/* Confirm Password */}
-          <div className={`field ${errors.confirmPassword ? "has-error" : form.confirmPassword && form.password === form.confirmPassword ? "is-valid" : ""}`}>
+          <div className={`field ${errors.confirmPassword ? "has-error" : ""}`}>
             <label htmlFor="confirmPassword">Confirm password</label>
             <div className="input-wrap">
               <span className="input-icon">🔐</span>
@@ -246,7 +237,18 @@ function SignUp() {
                 onClick={() => setShowConfirm((v) => !v)}
                 aria-label={showConfirm ? "Hide password" : "Show password"}
               >
-                {showConfirm ? "🙈" : "👁️"}
+                {showConfirm ? (
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                ) : (
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                )}
               </button>
             </div>
             {errors.confirmPassword && <p className="error-msg">{errors.confirmPassword}</p>}

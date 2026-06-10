@@ -393,6 +393,55 @@
    ::-webkit-scrollbar-track { background: var(--bg-base); }
    ::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 99px; }
    ::-webkit-scrollbar-thumb:hover { background: var(--accent-indigo); }
+
+
+   .back-home-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  
+    background: transparent;
+    border: none;
+  
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+  
+    cursor: pointer;
+    margin-bottom: 20px;
+  
+    transition: 0.3s;
+  }
+  
+  .back-home-btn:hover {
+    color: #0ea5e9;
+  }
+  
+  .password-group {
+    position: relative;
+  }
+  
+  .password-group input {
+    padding-right: 50px;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 43px;
+  
+    border: none;
+    background: transparent;
+  
+    cursor: pointer;
+    color: #94a3b8;
+  
+    font-size: 18px;
+  }
+  
+  .password-toggle:hover {
+    color: #0ea5e9;
+  }
    
    /* ══════════════════════════════════════════
       RESPONSIVE
